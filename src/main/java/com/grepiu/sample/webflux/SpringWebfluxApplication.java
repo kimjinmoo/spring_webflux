@@ -5,8 +5,6 @@ import com.grepiu.sample.webflux.process.entity.Sample;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Flux;
 
 /**
@@ -24,8 +22,7 @@ public class SpringWebfluxApplication {
 		System.out.println(gwc.getResult());
 	}
 
-	@Bean
-	CommandLineRunner init(SampleRepository sampleRepository) {
+	CommandLineRunner execute(SampleRepository sampleRepository) {
 		return args -> {
 			Flux<Sample> samples = Flux.just(
 					new Sample("테스트1", "아무개", "내용"),
@@ -37,5 +34,4 @@ public class SpringWebfluxApplication {
 					.subscribe(System.out::println);
 		};
 	}
-
 }

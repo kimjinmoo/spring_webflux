@@ -15,8 +15,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/sample")
 public class SampleController {
 
-  @Autowired
   private SampleRepository sampleRepository;
+
+  public SampleController(SampleRepository sampleRepository) {
+    this.sampleRepository = sampleRepository;
+  }
 
   /**
    * Sample 데이터를 가져온다.
