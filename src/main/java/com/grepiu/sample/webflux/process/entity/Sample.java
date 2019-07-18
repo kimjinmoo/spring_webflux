@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Sample {
 
   @Id
-  private int no;
+  private String id;
   private String subject;
   private String name;
   private String contents;
@@ -26,12 +26,12 @@ public class Sample {
     this.contents = contents;
   }
 
-  public int getNo() {
-    return no;
+  public String getId() {
+    return id;
   }
 
-  public void setNo(int no) {
-    this.no = no;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getSubject() {

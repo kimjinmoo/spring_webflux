@@ -1,4 +1,4 @@
-package com.grepiu.sample.webflux;
+package com.grepiu.sample.webflux.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

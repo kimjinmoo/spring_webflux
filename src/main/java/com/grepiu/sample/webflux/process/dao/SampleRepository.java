@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface SampleRepository extends ReactiveMongoRepository<Sample, Integer> {
+public interface SampleRepository extends ReactiveMongoRepository<Sample, String> {
 }

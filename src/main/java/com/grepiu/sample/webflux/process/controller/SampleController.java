@@ -32,8 +32,8 @@ public class SampleController {
   }
 
   @GetMapping("{no}")
-  public Mono<ResponseEntity<Sample>> getSampleByNo(@PathVariable("no") Integer no) {
-    return sampleRepository.findById(no)
+  public Mono<ResponseEntity<Sample>> getSampleByNo(@PathVariable("no") String id) {
+    return sampleRepository.findById(id)
         .map(ResponseEntity::ok)
         .defaultIfEmpty(ResponseEntity.notFound().build());
   }

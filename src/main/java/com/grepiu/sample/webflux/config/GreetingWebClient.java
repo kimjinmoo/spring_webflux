@@ -1,4 +1,4 @@
-package com.grepiu.sample.webflux;
+package com.grepiu.sample.webflux.config;
 
 
 import org.springframework.http.MediaType;
@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 public class GreetingWebClient {
 
-  private WebClient client = WebClient.create("http://localhost:8080");
+  private WebClient client = WebClient.create("http://localhost:3000");
 
   private Mono<ClientResponse> result = client.get()
       .uri("/hello")
