@@ -4,6 +4,9 @@
 <div>Spring Boot 2.2.0.M4</div>
 <div>mongodb-driver-reactivestreams</div>
 
+## 필요 사항
+<div>mongodb</div>
+
 ## 서버
 <div>default Port</div>
 <div>http://localhost:3000</div>
