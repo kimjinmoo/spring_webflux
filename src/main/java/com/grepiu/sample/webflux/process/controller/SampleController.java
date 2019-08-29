@@ -1,8 +1,13 @@
 package com.grepiu.sample.webflux.process.controller;
 
 import com.grepiu.sample.webflux.process.dao.SampleRepository;
+import com.grepiu.sample.webflux.process.domain.DefaultSearch;
 import com.grepiu.sample.webflux.process.entity.Sample;
+import com.grepiu.sample.webflux.process.service.SampleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +20,16 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/sample")
 public class SampleController {
 
-  private SampleRepository sampleRepository;
+  private Logger log = LoggerFactory.getLogger(SampleController.class);
 
-  public SampleController(SampleRepository sampleRepository) {
-    this.sampleRepository = sampleRepository;
+  private SampleService sampleService;
+
+  public SampleController(SampleService sampleService) {
+    this.sampleService = sampleService;
+  }
+
+  public void saveSample() {
+
   }
 
   /**
@@ -26,14 +37,14 @@ public class SampleController {
    *
    * @return Flux<Sample>
    */
-  @GetMapping
-  public Flux<Sample> getSamples() {
-    return sampleRepository.findAll();
+  @GetMapping(produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+  public Flux<Sample> getSamples(DefaultSearch search) {
+    return sampleService.getFindAll(search);
   }
 
-  @GetMapping("{no}")
+  @GetMapping(path = "/{no}", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
   public Mono<ResponseEntity<Sample>> getSampleByNo(@PathVariable("no") String id) {
-    return sampleRepository.findById(id)
+    return sampleService.findById(id)
         .map(ResponseEntity::ok)
         .defaultIfEmpty(ResponseEntity.notFound().build());
   }
