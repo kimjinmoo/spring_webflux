@@ -48,4 +48,16 @@ public class SampleController {
         .map(ResponseEntity::ok)
         .defaultIfEmpty(ResponseEntity.notFound().build());
   }
+
+  /**
+   *
+   * 샘플 데이터를 가져온다.
+   *
+   * @return Flux<String>
+   * @throws Exception
+   */
+  @GetMapping("/list")
+  public Flux<String> getSampleList() throws Exception {
+    return sampleService.getSample();
+  }
 }
