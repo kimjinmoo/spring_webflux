@@ -1,11 +1,13 @@
 # spring_webflux
 
 ## 구성
-<div>Spring Boot 2.2.0.M4</div>
+<div>Spring Boot 2.3.1</div>
+<div>gradle 5.6.4</div>
 <div>mongodb-driver-reactivestreams</div>
+<div>lombok</div>
 
 ## 필요 사항
-<div>mongodb</div>
+<div>mongodb installed</div>
 
 ## 서버
 <div>default Port</div>

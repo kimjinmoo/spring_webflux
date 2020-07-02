@@ -38,8 +38,8 @@ public class SampleController {
    * @return Flux<Sample>
    */
   @GetMapping(produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
-  public Flux<Sample> getSamples(DefaultSearch search) {
-    return sampleService.getFindAll(search);
+  public Flux<Sample> getSamples() {
+    return sampleService.getFindAll();
   }
 
   @GetMapping(path = "/{no}", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
@@ -57,7 +57,7 @@ public class SampleController {
    * @throws Exception
    */
   @GetMapping("/list")
-  public Flux<String> getSampleList() throws Exception {
-    return sampleService.getSample();
+  public Flux<Sample> getSampleList() throws Exception {
+    return sampleService.getFindAll();
   }
 }

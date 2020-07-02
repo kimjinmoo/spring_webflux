@@ -13,8 +13,11 @@ public class Sample {
 
   @Id
   private String id;
+  // 제먹
   private String subject;
+  // 이름
   private String name;
+  // 내용
   private String contents;
 
   public Sample() {

@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 public interface SampleService {
 
-  public Flux<Sample> getFindAll(DefaultSearch search);
+  public Flux<Sample> getFindAll();
 
   public Mono<Sample> findById(String id);
 

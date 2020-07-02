@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.0.M4'
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
 	id 'java'
 }
 
@@ -16,10 +16,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	// https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-reactivestreams
-	implementation group: 'org.mongodb', name: 'mongodb-driver-reactivestreams', version: '1.11.0'
+	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// mongo
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	compile group: 'org.mongodb', name: 'mongodb-driver-reactivestreams', version: '4.0.4'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok:1.18.12'
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 		exclude group: 'junit', module: 'junit'

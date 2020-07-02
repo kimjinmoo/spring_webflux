@@ -24,7 +24,7 @@ public class SampleServiceImpl implements SampleService {
   }
 
   @Override
-  public Flux<Sample> getFindAll(DefaultSearch search) {
+  public Flux<Sample> getFindAll() {
     return sampleRepository.findAll();
   }
 

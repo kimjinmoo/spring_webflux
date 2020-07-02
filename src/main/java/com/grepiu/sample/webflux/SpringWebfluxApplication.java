@@ -23,14 +23,19 @@ public class SpringWebfluxApplication {
 
 	@Bean
 	CommandLineRunner execute(SampleRepository sampleRepository) {
+		// sample 데이터를 저장한다.
 		return args -> {
-			Flux<Sample> samples = Flux.just(
-					new Sample("테스트1", "아무개", "내용")
-			).flatMap(sampleRepository::save);
+			if (sampleRepository.findAll().toStream().count() == 0) {
+				Flux<Sample> samples = Flux.just(
+						new Sample("테스트1", "아무개", "내용")
+				).flatMap(sampleRepository::save);
 
-			samples
-					.thenMany(sampleRepository.findAll())
-					.subscribe(System.out::println);
+				samples
+						.thenMany(sampleRepository.findAll())
+						.subscribe(
+								sample -> System.out.println("insert Data : " + sample.toString())
+						);
+			}
 		};
 	}
 }
